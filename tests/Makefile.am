@@ -543,6 +543,10 @@ ktls_keyupdate_CFLAGS = -DUSE_KTLS
 dist_check_SCRIPTS += ktls_keyupdate.sh
 endif
 
+if ENABLE_QUIC
+ctests += gnutls_quic gnutls_quic_earlydata
+endif
+
 dist_check_SCRIPTS += dtls/dtls.sh dtls/dtls-resume.sh #dtls/dtls-nb
 
 indirect_tests += dtls-stress
