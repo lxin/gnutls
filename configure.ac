@@ -1471,6 +1471,9 @@ fi
 if test "$enable_ktls" = yes; then
 	hw_features="$hw_features ktls"
 fi
+if test "$enable_quic" = yes; then
+	hw_features="$hw_features quic"
+fi
 hw_features=`eval 'expr "$hw_features" : " \(.*\)"'`
 AC_DEFINE_UNQUOTED([HW_FEATURES], ["$hw_features"],
 	[The enabled hardware features])
@@ -1611,6 +1614,7 @@ AC_MSG_NOTICE([External hardware support:
   TPM support:          $with_tpm
   TPM2 support:         $with_tpm2
   KTLS support:         $enable_ktls
+  QUIC support:         $enable_quic
 ])
 
 if test -n "$ac_trousers_lib" && test "$with_tpm" != "no";then

@@ -806,6 +806,7 @@ APIMANS += gnutls_pubkey_set_spki.3
 APIMANS += gnutls_pubkey_verify_data2.3
 APIMANS += gnutls_pubkey_verify_hash2.3
 APIMANS += gnutls_pubkey_verify_params.3
+APIMANS += gnutls_quic_handshake.3
 APIMANS += gnutls_random_art.3
 APIMANS += gnutls_range_split.3
 APIMANS += gnutls_reauth.3

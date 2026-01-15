@@ -759,6 +759,7 @@ gnutls_pubkey_set_spki@GNUTLS_3_6_0
 gnutls_pubkey_verify_data2@GNUTLS_3_4
 gnutls_pubkey_verify_hash2@GNUTLS_3_4
 gnutls_pubkey_verify_params@GNUTLS_3_4
+gnutls_quic_handshake@GNUTLS_3_8_11
 gnutls_random_art@GNUTLS_3_4
 gnutls_range_split@GNUTLS_3_4
 gnutls_realloc@GNUTLS_3_4

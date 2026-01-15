@@ -369,6 +369,31 @@ LIBTASN1_MINIMUM=4.9
   fi
   AM_CONDITIONAL(ENABLE_KTLS, test "$enable_ktls" != "no")
 
+  # For QUIC
+  AC_MSG_CHECKING([whether to add QUIC support])
+  AC_ARG_ENABLE(quic,
+    AS_HELP_STRING([--enable-quic], [enable QUIC support]),
+  enable_quic=$enableval,enable_quic=no)
+  AC_MSG_RESULT($enable_quic)
+
+  if test "$enable_quic" = "yes"; then
+    AC_MSG_CHECKING([whether QUIC is supported by the OS])
+    AS_CASE([$host_os],
+      [freebsd*], [AC_CHECK_HEADERS([sys/quic.h], [
+        AC_DEFINE([HAVE_QUIC],[1],[QUIC headers found at compile time])
+      ], [
+        AC_MSG_ERROR([<sys/quic.h> not found])
+      ])],
+      [linux*], [AC_CHECK_HEADERS([linux/quic.h], [
+        AC_DEFINE([HAVE_QUIC],[1],[QUIC headers found at compile time])
+      ], [
+        AC_MSG_ERROR([<linux/quic.h> not found])
+      ])]
+    )
+    AC_DEFINE([ENABLE_QUIC], 1, [Enable QUIC support])
+  fi
+  AM_CONDITIONAL(ENABLE_QUIC, test "$enable_quic" != "no")
+
   # For OCSP
   AC_MSG_CHECKING([whether to disable OCSP support])
   AC_ARG_ENABLE(ocsp,
